@@ -74,7 +74,8 @@ void ElegantOtaClass::setID(const char* id){
         if (upload.status == UPLOAD_FILE_START) {
             Serial.setDebugOutput(true);
             Serial.printf("Update Received: %s\n", upload.filename.c_str());
-            if (upload.name == "filesystem") {
+            if (upload.filename == "spiffs.bin") {
+                Serial.printf("FILESYSTEM UPDATE");
                 if (!Update.begin(UPDATE_SIZE_UNKNOWN, U_SPIFFS)) { //start with max available size
                     Update.printError(Serial);
                 }
